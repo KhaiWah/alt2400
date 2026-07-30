@@ -1,0 +1,16 @@
+name: 'Terraform container action'
+description: 'Demonstration'
+author: 'khaiwah'
+inputs:
+  STATE_KEY:
+      description: 'Personal identification'
+      required: true
+    TF_STAGE:
+      description: 'Django secret key to start'
+      required: true
+    DJANGO_SECRET_KEY_PROD:
+      description: 'Django secret key'
+      required: false
+  runs:
+    using: 'docker'
+    image: 'Dockerfile'
