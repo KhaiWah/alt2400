@@ -1,14 +1,9 @@
 name: Build_Curl_GC
 
 on: 
-  push:
-    branches:
-    - main 
+  workflow_dispatch: 
 
-# Required for Google Cloud Provider Identity Federation
-permissions: 
-  contents: read
-  id-token: write 
+permissions: {}
 
 jobs:
   build-and-curl:
