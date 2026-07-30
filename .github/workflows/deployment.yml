@@ -1,0 +1,33 @@
+name: Build_Curl_GC
+
+on: 
+  push:
+    branches:
+    - main 
+
+# Required for Google Cloud Provider Identity Federation
+permissions: 
+  contents: read
+  id-token: write 
+
+jobs:
+  build-and-curl:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get-code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+
+      - name: docker-build 
+        run: |
+          docker build -t pipeline-test .
+
+      - name: docker-run 
+        env:
+          DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY}}
+        run: |
+          docker run -d -p 8000:8000 -e DJANGO_SECRET_KEY="$DJANGO_SECRET_KEY" pipeline-test
+      - name: curl-ftw
+        run: |
+          sleep 10
+          curl -f http://localhost:8000/
+        
