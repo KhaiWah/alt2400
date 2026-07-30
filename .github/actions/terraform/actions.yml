@@ -1,16 +1,17 @@
-name: 'Terraform container action'
-description: 'Demonstration'
-author: 'khaiwah'
+name: 'Terraform container actions'
+description: 'Terraform action demonstrates via a Secure OIDC'
+author: 'KhaiWah'
 inputs:
+  TF_STAGE:
+    description: ''
+    required: true
+    default: 'plan'
   STATE_KEY:
-      description: 'Personal identification'
-      required: true
-    TF_STAGE:
-      description: 'Django secret key to start'
-      required: true
-    DJANGO_SECRET_KEY_PROD:
-      description: 'Django secret key'
-      required: false
-  runs:
-    using: 'docker'
-    image: 'Dockerfile'
+    description: ''
+    required: true
+  DJANGO_SECRET_KEY_PROD:
+    description: ''
+    required: false
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
