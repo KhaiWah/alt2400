@@ -41,4 +41,24 @@ jobs:
             name: project-sbom
             path: sbom.json
             compression-level: 0
+
+  terraform-stage1:
+    needs: [build-and-curl, sbom-scan-and-test]
+    runs-on: ubuntu-latest
+    steps:
+      - name: get-code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+
+      - name: terraform-stage-1
+        uses: ./.github/actions/terraform
+        with:
+          STATE_KEY: 'khaiwah'
+          TF_STAGE: 'stage1'
+
         
