@@ -52,7 +52,7 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
 
       - name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@554640142bcda9d70fa7c91206f4fb8e957591fe 
+        uses: google-github-actions/auth@71fee30a0bcc70d47e978651a9c112eb3155732d 
         with:
           credentials_json: ${{ secrets.GCP_CREDENTIALS }}
 
@@ -90,7 +90,7 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
 
       - name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@554640142bcda9d70fa7c91206f4fb8e957591fe
+        uses: google-github-actions/auth@71fee30a0bcc70d47e978651a9c112eb3155732d
         with:
           credentials_json: ${{ secrets.GCP_CREDENTIALS }}
 
@@ -109,7 +109,7 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
 
       - name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@554640142bcda9d70fa7c91206f4fb8e957591fe
+        uses: google-github-actions/auth@71fee30a0bcc70d47e978651a9c112eb3155732d
         with:
           credentials_json: ${{ secrets.GCP_CREDENTIALS }}
 
@@ -135,7 +135,7 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
   
       - name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@554640142bcda9d70fa7c91206f4fb8e957591fe
+        uses: google-github-actions/auth@71fee30a0bcc70d47e978651a9c112eb3155732d
         with:
           credentials_json: ${{ secrets.GCP_CREDENTIALS }}
   
