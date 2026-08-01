@@ -3,7 +3,9 @@ name: Build_Curl_GC
 on: 
   workflow_dispatch: 
 
-permissions: {}
+permissions:
+  contents: read   
+  id-token: write  
 
 jobs:
   build-and-curl:
