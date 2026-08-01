@@ -114,7 +114,7 @@ jobs:
       - name: get_container_dns
         run: |
           echo "Waiting for service endpoint tracking configuration..."
-          sleep 30
+          sleep 60
           SERVICE_URL=$(gcloud run services describe acmp-khaiwah-instance --platform managed --region us-east1 --format="value(status.url)")
           echo "Target live cloud url: $SERVICE_URL"
           curl -f "$SERVICE_URL"
