@@ -52,7 +52,7 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
 
       - name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@62cc5e77451a7da931f50a3da5dcbba8698ee5d0 
+        uses: google-github-actions/auth@ef5d4d6ba1ada42e3796ab0e3d231de2b1216d25
         with:
           credentials_json: ${{ secrets.GCP_CREDENTIALS }}
 
