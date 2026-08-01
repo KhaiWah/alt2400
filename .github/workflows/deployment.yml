@@ -52,7 +52,7 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
 
       - name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@71fee30a0bcc70d47e978651a9c112eb3155732d
+        uses: google-github-actions/auth@554640142bcda9d70fa7c91206f4fb8e957591fe 
         with:
           credentials_json: ${{ secrets.GCP_CREDENTIALS }}
 
@@ -90,7 +90,7 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
 
       - name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@71fee30a0bcc70d47e978651a9c112eb3155732d
+        uses: google-github-actions/auth@554640142bcda9d70fa7c91206f4fb8e957591fe
         with:
           credentials_json: ${{ secrets.GCP_CREDENTIALS }}
 
@@ -107,10 +107,12 @@ jobs:
     steps:
       - name: get_code
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+
       - name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@71fee30a0bcc70d47e978651a9c112eb3155732d
+        uses: google-github-actions/auth@554640142bcda9d70fa7c91206f4fb8e957591fe
         with:
           credentials_json: ${{ secrets.GCP_CREDENTIALS }}
+
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@60a4f5263795b8ee9e5bc531b7e63473f3fc3c4c
       - name: get_container_dns
@@ -124,7 +126,7 @@ jobs:
           
           echo "=== Executing Strict Network Health Audit ==="
           curl -f -H "Authorization: Bearer $AUTH_TOKEN" "$SERVICE_URL"
-          
+  
   terraform-stage-3:
     needs: pre-eval
     runs-on: ubuntu-latest
@@ -133,7 +135,7 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
   
       - name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@71fee30a0bcc70d47e978651a9c112eb3155732d
+        uses: google-github-actions/auth@554640142bcda9d70fa7c91206f4fb8e957591fe
         with:
           credentials_json: ${{ secrets.GCP_CREDENTIALS }}
   
@@ -142,4 +144,3 @@ jobs:
         with:
           STATE_KEY: 'khaiwah'
           TF_STAGE: 'stage3'
-
