@@ -34,6 +34,14 @@ jobs:
       - name: get_code
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
 
+      - name: Trufflehog Secrets Scan
+        uses: trufflesecurity/trufflehog@e12da7682fde0d9818816b67fc19dfbe6f199852 
+        with:
+          path: ./
+          base: ""
+          head: "HEAD"
+          extra_args: --only-verified
+
       - name: sbom_gen_and_scan
         uses: ./.github/actions/sbom-scan
 
@@ -52,7 +60,7 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
 
       - name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@ef5d4d6ba1ada42e3796ab0e3d231de2b1216d25
+        uses: google-github-actions/auth@6fc60434221d7945558798afec38a91630161d36
         with:
           credentials_json: ${{ secrets.GCP_CREDENTIALS }}
 
@@ -90,7 +98,7 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
 
       - name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@5a153479db58f878564756fc4de33be32c86b1fb
+        uses: google-github-actions/auth@6fc60434221d7945558798afec38a91630161d36
         with:
           credentials_json: ${{ secrets.GCP_CREDENTIALS }}
 
@@ -109,7 +117,7 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
 
       - name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@5a153479db58f878564756fc4de33be32c86b1fb
+        uses: google-github-actions/auth@6fc60434221d7945558798afec38a91630161d36
         with:
           credentials_json: ${{ secrets.GCP_CREDENTIALS }}
 
@@ -135,7 +143,7 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
   
       - name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@5a153479db58f878564756fc4de33be32c86b1fb
+        uses: google-github-actions/auth@6fc60434221d7945558798afec38a91630161d36
         with:
           credentials_json: ${{ secrets.GCP_CREDENTIALS }}
   
