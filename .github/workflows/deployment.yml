@@ -118,6 +118,9 @@ jobs:
           SERVICE_URL=$(gcloud run services describe acmp-khaiwah-instance --platform managed --region us-east1 --format="value(status.url)")
           echo "Target live cloud url: $SERVICE_URL"
           curl -f "$SERVICE_URL"
+
+          AUTH_TOKEN=$(gcloud auth print-identity-token)
+          curl -f -H "Authorization: Bearer $AUTH_TOKEN" "$SERVICE_URL"
   
   terraform-stage-3:
     needs: pre-eval
