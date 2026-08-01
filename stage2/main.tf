@@ -33,8 +33,8 @@ resource "google_cloud_run_v2_service" "khaiwah-cloudrun" {
       }
 
       env {
-        name  = "DJANGO_SECRET_KEY"
-        value = var.DJANGO_SECRET_KEY_PROD
+        name  = "ALLOWED_HOSTS"
+        value = "*"
       }
 
       resources {
@@ -55,6 +55,6 @@ resource "google_cloud_run_v2_service" "khaiwah-cloudrun" {
 resource "google_cloud_run_v2_service_iam_member" "public_access" {
   name     = google_cloud_run_v2_service.khaiwah-cloudrun.name
   location = google_cloud_run_v2_service.khaiwah-cloudrun.location
-  role     = "roles/run.viewer"
+  role     = "roles/run.invoker"
   member   = "allUsers"
 }
