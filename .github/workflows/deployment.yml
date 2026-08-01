@@ -1,7 +1,9 @@
 name: Build_Curl_GC
 
 on: 
-  workflow_dispatch: 
+  push:
+    branches:
+      - main
 
 permissions: {}
 
@@ -50,7 +52,7 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
 
       - name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@v2
+        uses: google-github-actions/auth@62cc5e77451a7da931f50a3da5dcbba8698ee5d0
         with:
           credentials_json: ${{ secrets.GCP_CREDENTIALS }}
 
@@ -88,7 +90,7 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
 
       - name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@v2
+        uses: google-github-actions/auth@62cc5e77451a7da931f50a3da5dcbba8698ee5d0
         with:
           credentials_json: ${{ secrets.GCP_CREDENTIALS }}
 
@@ -110,7 +112,7 @@ jobs:
         with:
           credentials_json: ${{ secrets.GCP_CREDENTIALS }}
       - name: Set up Cloud SDK
-        uses: google-github-actions/setup-gcloud@v2
+        uses: google-github-actions/setup-gcloud@60a4f5263795b8ee9e5bc531b7e63473f3fc3c4c
       - name: get_container_dns
         run: |
           echo "Waiting for service endpoint tracking configuration..."
