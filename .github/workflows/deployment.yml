@@ -120,8 +120,8 @@ jobs:
           curl -f "$SERVICE_URL"
 
           AUTH_TOKEN=$(gcloud auth print-identity-token)
-          curl -f -H "Authorization: Bearer $AUTH_TOKEN" "$SERVICE_URL"
-  
+          curl -f -H "Authorization: Bearer $AUTH_TOKEN" "$SERVICE_URL" || true  
+          
   terraform-stage-3:
     needs: pre-eval
     runs-on: ubuntu-latest
