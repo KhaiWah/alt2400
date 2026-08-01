@@ -82,24 +82,23 @@ jobs:
           docker push us-east1-docker.pkg.dev/devopalt/khaiwah-repo/final:latest
 
   terraform-stage-2:
-      needs: build-tag-push
-      runs-on: ubuntu-latest
-      steps:
-        - name: get-code
-          uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
-  
-        - name: Authenticate to Google Cloud
-          uses: google-github-actions/auth@v2
-          with:
-            credentials_json: ${{ secrets.GCP_CREDENTIALS }}
-  
-        - name: terraform-stage-2
-          uses: ./.github/actions/terraform
-          with:
-            STATE_KEY: 'khaiwah'
-            TF_STAGE: 'stage2'
-            DJANGO_SECRET_KEY_PROD: ${{ secrets.DJANGO_SECRET_KEY }}
+    needs: build-tag-push
+    runs-on: ubuntu-latest
+    steps:
+      - name: get-code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
 
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_CREDENTIALS }}
+
+      - name: terraform-stage-2
+        uses: ./.github/actions/terraform
+        with:
+          STATE_KEY: 'khaiwah'
+          TF_STAGE: 'stage2'
+          DJANGO_SECRET_KEY_PROD: ${{ secrets.DJANGO_SECRET_KEY }}
 
   terraform-stage-3:
     needs: terraform-stage-2
@@ -118,4 +117,3 @@ jobs:
         with:
           STATE_KEY: 'khaiwah'
           TF_STAGE: 'stage3'
-
