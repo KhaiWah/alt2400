@@ -124,7 +124,7 @@ jobs:
           credentials_json: ${{ secrets.GCP_CREDENTIALS }}
 
       - name: Set up Cloud SDK
-        uses: google-github-actions/setup-gcloud@60a4f5263795b8ee9e5bc531b7e63473f3fc3c4c
+        uses: google-github-actions/setup-gcloud@v2
       - name: get_container_dns
         run: |
           echo "Waiting for service endpoint tracking configuration..."
